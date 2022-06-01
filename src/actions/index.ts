@@ -4,12 +4,12 @@ export const addTask = (task: string) => ({
   payload: task,
 });
 
-export const removeTask = (id: number) => ({
+export const removeTask = (id: number | string) => ({
   type: 'REMOVE_TASK',
   payload: id,
 });
 
-export const editTask = (id: number, task: string) => ({
+export const editTask = (id: number | string, task: string) => ({
   type: 'EDIT_TASK',
   payload: { id, task },
 });
