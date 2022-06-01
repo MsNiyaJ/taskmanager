@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
+import allReducers from './reducers';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -12,7 +13,7 @@ const root = ReactDOM.createRoot(
 
 // Create a store that will handle the state of the app
 const store = configureStore({
-  reducer: {},
+  reducer: allReducers,
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
