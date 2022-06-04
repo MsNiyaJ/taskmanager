@@ -19,7 +19,6 @@ export const clearTasks = () => ({
 });
 
 // Display Mode
-export const setDisplayMode = (mode: string) => ({
-  type: 'SET_DISPLAY_MODE',
-  payload: mode,
+export const toggleDisplayMode = () => ({
+  type: 'TOGGLE_DISPLAY_MODE',
 });

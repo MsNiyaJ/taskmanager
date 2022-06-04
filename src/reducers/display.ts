@@ -3,8 +3,8 @@ const displayReducer = (
   action: { type: string; payload: string }
 ) => {
   switch (action.type) {
-    case 'SET_DISPLAY_MODE':
-      return action.payload;
+    case 'TOGGLE_DISPLAY_MODE':
+      return state === 'dark' ? 'light' : 'dark';
     default:
       return state;
   }
