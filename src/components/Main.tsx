@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from './Header';
+import TasksContainer from './TasksContainer';
 import Toolbar from './Toolbar';
 
 const Main = () => {
@@ -8,6 +9,7 @@ const Main = () => {
       <Header />
       <div className="main-container">
         <Toolbar />
+        <TasksContainer />
       </div>
     </div>
   );
