@@ -18,9 +18,9 @@ export const clearTasks = () => ({
   type: 'CLEAR_TASKS',
 });
 
-export const changeStatus = (id: number | string, newStatus: string) => ({
+export const changeStatus = (id: number | string) => ({
   type: 'CHANGE_STATUS',
-  payload: { id, newStatus },
+  payload: id,
 });
 
 // Display Mode

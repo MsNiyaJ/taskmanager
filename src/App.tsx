@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '.';
 import { classNames } from './helpers/classNames';
+import { isDarkMode } from './helpers/isDarkMode';
 import Main from './components/Main';
 import './global.css';
 
@@ -10,7 +11,7 @@ function App() {
 
   const appStyles = classNames([
     'App',
-    display === 'dark' ? 'dark-theme' : 'light-theme',
+    isDarkMode(display) ? 'dark-theme' : 'light-theme',
   ]);
 
   return (

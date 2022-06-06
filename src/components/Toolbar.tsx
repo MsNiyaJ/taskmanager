@@ -1,6 +1,7 @@
 import React from 'react';
 import { PlusIcon, SunIcon, MoonIcon } from '@heroicons/react/outline';
 import { classNames } from '../helpers/classNames';
+import { isDarkMode } from '../helpers/isDarkMode';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '..';
 import { toggleDisplayMode } from '../actions';
@@ -13,8 +14,8 @@ const Toolbar = () => {
 
   // Setting the class names for the buttons
   const buttonTheme = classNames([
-    display === 'dark' ? 'text-white' : 'text-black',
-    display === 'dark' ? 'dark-theme-btn' : 'light-theme-btn',
+    isDarkMode(display) ? 'text-white' : 'text-black',
+    isDarkMode(display) ? 'dark-theme-btn' : 'light-theme-btn',
   ]);
 
   return (
@@ -24,7 +25,7 @@ const Toolbar = () => {
         New
       </button>
       <div onClick={() => toggleDisplay()}>
-        {display === 'dark' ? (
+        {isDarkMode(display) ? (
           <SunIcon className="md-icon" />
         ) : (
           <MoonIcon className="md-icon text-black" />
