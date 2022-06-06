@@ -46,13 +46,24 @@ const taskReducer = (state = tasks, action: { type: string; payload: any }) => {
       const { id, newTask }: { id: number | string; newTask: string } =
         action.payload;
 
-      return state.map((task: { id: number | string }) =>
+      return state.map((task) =>
         // Find the edited task and set the newTask data
         task.id === id ? { ...task, task: newTask } : task
       );
 
     case 'CLEAR_TASKS':
       return [];
+
+    case 'CHANGE_STATUS':
+      const {
+        id: taskID,
+        newStatus,
+      }: { id: string | number; newStatus: string } = action.payload;
+
+      return state.map((task) =>
+        // Find the task we are modifying and set the newStatus data
+        task.id === taskID ? { ...task, status: newStatus } : task
+      );
 
     default:
       return state;
