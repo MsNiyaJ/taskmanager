@@ -25,9 +25,9 @@ const Toolbar = () => {
       </button>
       <div onClick={() => toggleDisplay()}>
         {display === 'dark' ? (
-          <SunIcon className="sm-icon" />
+          <SunIcon className="md-icon" />
         ) : (
-          <MoonIcon className="sm-icon text-black" />
+          <MoonIcon className="md-icon text-black" />
         )}
       </div>
       <button className={buttonTheme}>Clear All</button>
