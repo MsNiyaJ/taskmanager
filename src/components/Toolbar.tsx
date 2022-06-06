@@ -24,7 +24,7 @@ const Toolbar = () => {
         <PlusIcon className="sm-icon" />
         New
       </button>
-      <div onClick={() => toggleDisplay()}>
+      <div className="cursor-pointer" onClick={() => toggleDisplay()}>
         {isDarkMode(display) ? (
           <SunIcon className="md-icon" />
         ) : (
