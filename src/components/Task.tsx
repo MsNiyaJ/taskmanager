@@ -19,7 +19,7 @@ const Task = ({ task }: TaskType) => {
   const [value, setValue] = React.useState(description);
 
   // Change the task's description when the user types in the input
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onChange = (e: { target: { value: React.SetStateAction<string> } }) => {
     setValue(e.target.value);
   };
 
@@ -52,12 +52,12 @@ const Task = ({ task }: TaskType) => {
         onClick={() => changeCompleteStatus()}
       >
         {isComplete ? (
-          <CheckCircleIcon className="completed-circle" />
+          <CheckCircleIcon className="completed-circle md-icon" />
         ) : (
           <div className={circleClassName} />
         )}
       </div>
-      <input
+      <textarea
         disabled={isComplete} // Only edit the task if it's not complete
         value={value}
         className={descriptionClassName}
