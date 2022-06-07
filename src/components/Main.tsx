@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './Header';
 import TasksContainer from './TasksContainer';
 import Toolbar from './Toolbar';
+import Footer from './Footer';
 
 const Main = () => {
   return (
@@ -11,6 +12,7 @@ const Main = () => {
         <Toolbar />
         <TasksContainer />
       </div>
+      <Footer />
     </div>
   );
 };
