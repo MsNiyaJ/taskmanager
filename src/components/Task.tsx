@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '..';
 import { isDarkMode } from '../helpers/isDarkMode';
 import { classNames } from '../helpers/classNames';
-import { changeStatus, editTask } from '../actions';
+import { changeStatus, editTask, removeTask } from '../actions';
 import { CheckCircleIcon, TrashIcon } from '@heroicons/react/outline';
 
 type TaskType = {
@@ -26,6 +26,7 @@ const Task = ({ task }: TaskType) => {
   const dispatch = useDispatch();
   const changeCompleteStatus = () => dispatch(changeStatus(id));
   const editTaskDescription = () => dispatch(editTask(id, value));
+  const deleteTask = () => dispatch(removeTask(id));
 
   const display = useSelector((state: RootState) => state.display);
   const isComplete = complete;
@@ -65,7 +66,10 @@ const Task = ({ task }: TaskType) => {
         onBlur={() => editTaskDescription()} // Save the task when the user clicks out of the input
         onKeyDown={() => editTaskDescription()} // Save the task when the user presses enter
       />
-      <TrashIcon className="md-icon cursor-pointer" />
+      <TrashIcon
+        className="md-icon cursor-pointer"
+        onClick={() => deleteTask()}
+      />
     </div>
   );
 };
