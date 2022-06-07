@@ -31,6 +31,16 @@ const tasks: TaskInterface = [
     description: "Buy gift for Father's Day",
     complete: false,
   },
+  {
+    id: 5,
+    description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+    ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in 
+    voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint 
+    occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`,
+    complete: false,
+  },
 ];
 
 const taskReducer = (state = tasks, action: { type: string; payload: any }) => {
@@ -55,16 +65,13 @@ const taskReducer = (state = tasks, action: { type: string; payload: any }) => {
       return [];
 
     case 'CHANGE_STATUS':
-      const { id: taskID }: { id: string | number } = action.payload;
+      const taskID = action.payload;
 
       return state.map((task) => {
-        const isComplete = task.complete;
-
-        // Toggle Complete Status
-        const newStatus = isComplete ? false : true;
-
-        // Find the task we are modifying and change status of completion
-        return task.id === taskID ? { ...task, complete: newStatus } : task;
+        // Find the task we are modifying and toggle status of completion, return the task as is by default
+        return task.id === taskID
+          ? { ...task, complete: !task.complete }
+          : task;
       });
 
     default:

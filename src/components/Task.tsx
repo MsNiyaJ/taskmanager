@@ -1,11 +1,13 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '..';
 import { isDarkMode } from '../helpers/isDarkMode';
+import { changeStatus } from '../actions';
 import {
   CheckCircleIcon,
   InformationCircleIcon,
 } from '@heroicons/react/outline';
+import { classNames } from '../helpers/classNames';
 
 type TaskType = {
   task: {
@@ -16,8 +18,14 @@ type TaskType = {
 };
 
 const Task = ({ task }: TaskType) => {
+  const { id, description, complete } = task;
+
+  const dispatch = useDispatch();
+  const changeCompleteStatus = () => {
+    dispatch(changeStatus(id));
+  };
+
   const display = useSelector((state: RootState) => state.display);
-  const { description, complete } = task;
   const isComplete = complete;
 
   // Styles
@@ -29,14 +37,25 @@ const Task = ({ task }: TaskType) => {
     ? 'dark-theme-circle'
     : 'light-theme-circle';
 
+  const descriptionClassName = classNames([
+    isComplete ? 'strikethrough-text' : '',
+    isDarkMode(display) ? 'text-white' : 'text-black',
+    'task-description',
+  ]);
+
   return (
     <div className={containerClassNames}>
-      {isComplete ? (
-        <CheckCircleIcon className="md-icon completed-circle" />
-      ) : (
-        <div className={circleClassName} />
-      )}
-      <div>{description}</div>
+      <div
+        className="cursor-pointer md-icon"
+        onClick={() => changeCompleteStatus()}
+      >
+        {isComplete ? (
+          <CheckCircleIcon className="completed-circle" />
+        ) : (
+          <div className={circleClassName} />
+        )}
+      </div>
+      <div className={descriptionClassName}>{description}</div>
       <InformationCircleIcon className="md-icon" />
     </div>
   );
