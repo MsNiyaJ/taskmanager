@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from 'uuid';
+
 /**
  * @description Describes the properties of a task
  * @property id - The id of the task
@@ -46,7 +48,7 @@ const tasks: TaskInterface = [
 const taskReducer = (state = tasks, action: { type: string; payload: any }) => {
   switch (action.type) {
     case 'ADD_TASK':
-      return [...state, action.payload];
+      return [{ id: uuidv4(), description: '', complete: false }, ...state];
 
     case 'REMOVE_TASK':
       return state.filter((task) => task.id !== action.payload);

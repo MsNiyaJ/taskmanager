@@ -4,15 +4,18 @@ import { classNames } from '../helpers/classNames';
 import { isDarkMode } from '../helpers/isDarkMode';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '..';
-import { toggleDisplayMode, clearTasks } from '../actions';
+import { toggleDisplayMode, clearTasks, addTask } from '../actions';
 
 const Toolbar = () => {
   const display = useSelector((state: RootState) => state.display);
 
   const dispatch = useDispatch();
   const toggleDisplay = () => dispatch(toggleDisplayMode());
+  const addNewTask = () => dispatch(addTask());
   const clearAllTasks = () => {
-    const isExecuted = window.confirm('Are you sure you want to clear all tasks?')
+    const isExecuted = window.confirm(
+      'Are you sure you want to clear all tasks?'
+    );
     if (isExecuted) {
       dispatch(clearTasks());
     }
@@ -27,7 +30,12 @@ const Toolbar = () => {
 
   return (
     <div className="toolbar-container">
-      <button className={buttonTheme}>
+      <button
+        className={buttonTheme}
+        onClick={() => {
+          addNewTask();
+        }}
+      >
         <PlusIcon className="sm-icon" />
         New
       </button>
