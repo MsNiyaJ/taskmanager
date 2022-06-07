@@ -2,12 +2,9 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '..';
 import { isDarkMode } from '../helpers/isDarkMode';
-import { changeStatus } from '../actions';
-import {
-  CheckCircleIcon,
-  InformationCircleIcon,
-} from '@heroicons/react/outline';
 import { classNames } from '../helpers/classNames';
+import { changeStatus, editTask } from '../actions';
+import { CheckCircleIcon, TrashIcon } from '@heroicons/react/outline';
 
 type TaskType = {
   task: {
@@ -19,11 +16,16 @@ type TaskType = {
 
 const Task = ({ task }: TaskType) => {
   const { id, description, complete } = task;
+  const [value, setValue] = React.useState(description);
+
+  // Change the task's description when the user types in the input
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setValue(e.target.value);
+  };
 
   const dispatch = useDispatch();
-  const changeCompleteStatus = () => {
-    dispatch(changeStatus(id));
-  };
+  const changeCompleteStatus = () => dispatch(changeStatus(id));
+  const editTaskDescription = () => dispatch(editTask(id, value));
 
   const display = useSelector((state: RootState) => state.display);
   const isComplete = complete;
@@ -55,8 +57,15 @@ const Task = ({ task }: TaskType) => {
           <div className={circleClassName} />
         )}
       </div>
-      <div className={descriptionClassName}>{description}</div>
-      <InformationCircleIcon className="md-icon" />
+      <input
+        disabled={isComplete} // Only edit the task if it's not complete
+        value={value}
+        className={descriptionClassName}
+        onChange={onChange}
+        onBlur={() => editTaskDescription()} // Save the task when the user clicks out of the input
+        onKeyDown={() => editTaskDescription()} // Save the task when the user presses enter
+      />
+      <TrashIcon className="md-icon cursor-pointer" />
     </div>
   );
 };

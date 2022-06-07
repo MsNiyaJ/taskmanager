@@ -158,6 +158,12 @@ h1 {
   width: 100%;
   max-height: 4rem;
   overflow: scroll;
+  background-color: transparent;
+  border: none;
+}
+
+.task-description:focus {
+  outline: none /* Removes the border when the input is clicked */
 }
 
 .strikethrough-text {
