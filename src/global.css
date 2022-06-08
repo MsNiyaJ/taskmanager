@@ -176,9 +176,21 @@ h1 {
 
 /* media queries */
 
-/* Tablet and Desktop */
-@media (min-width: 650px) {
+/* Tablet */
+@media (min-width: 760px) {
   .main-container {
-    padding: 2rem 10rem;
+    max-width: 760px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .main-container {
+    padding: 4rem 10rem;
+    max-width: 1024px;
+    margin-left: auto;
+    margin-right: auto;
   }
 }

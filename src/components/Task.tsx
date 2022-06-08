@@ -59,6 +59,7 @@ const Task = ({ task }: TaskType) => {
         )}
       </div>
       <textarea
+        autoFocus={true}
         disabled={isComplete} // Only edit the task if it's not complete
         value={value}
         className={descriptionClassName}
