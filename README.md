@@ -1,6 +1,8 @@
 # Task Manager
 
-A simple app that allows users to store tasks. <br /> This app was made to practice working with Redux.
+A to-do list that allows the user to add, edit, and delete tasks. The user can also mark tasks as complete. <br />
+Created to practice with Redux.
+
 
 ## Tech Stack
 
