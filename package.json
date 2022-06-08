@@ -1,5 +1,6 @@
 {
   "name": "taskmanager",
+  "homepage": "https://msniyaj.github.io/taskmanager/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
