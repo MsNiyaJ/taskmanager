@@ -14,11 +14,10 @@ const TasksContainer = () => {
   // Zero State for tasks
   if (tasks.length === 0) {
     return (
-      <div style={{ marginTop: '5rem', textAlign: 'center' }}>
+      <div style={{ marginTop: '5rem', textAlign: 'center', fontSize: '1.5rem' }}>
         <p>No tasks found!</p>
         <p>
-          Click on <span style={{ color: '#6942d6' }}>'+ New'</span> to add a
-          new task.
+          Click on '+ New' to add a new task.
         </p>
       </div>
     );
